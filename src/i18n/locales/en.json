@@ -1,0 +1,368 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "team": "Team",
+    "projects": "Projects",
+    "contact": "Contact",
+    "services": "Services"
+  },
+  "hero": {
+    "title": "A Shift in Development",
+    "subtitle": "Shift Start team specialized in web development and design using cutting-edge technologies",
+    "description": "We are a passionate technology team, providing innovative solutions and attractive designs that meet our clients' needs and achieve their digital goals",
+    "cta": "Contact Us",
+    "learnMore": "Learn More"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Professional team specialized in development",
+    "description": "We are Shift Start team, a group of creative developers and designers who strive to provide the best technical solutions. We believe that every project is a new beginning and an opportunity for creativity and excellence.",
+    "storyTitle": "Our Story",
+    "additionalText": "We are a team of creative developers and designers who share one passion: delivering the best technical solutions. We believe in the power of technology to transform businesses and improve people's lives.",
+    "yearsExperience": "Years of Experience",
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the first choice for companies and individuals seeking excellence in the digital world"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "We provide innovative technical solutions and modern designs that help our clients achieve their goals and build a strong presence on the internet"
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "The values we believe in and guide our daily work",
+      "quality": "Quality",
+      "innovation": "Innovation",
+      "excellence": "Excellence",
+      "commitment": "Commitment"
+    },
+    "whyChooseUsTitle": "Why Choose Us?",
+    "speed": "Speed in Execution",
+    "speedDesc": "We meet deadlines and deliver your projects on time",
+    "innovationTitle": "Innovative Solutions",
+    "innovationDesc": "We provide creative ideas and advanced technical solutions to distinguish your project",
+    "partnershipTitle": "Long-term Partnership",
+    "partnershipDesc": "We believe in long-term relationships and provide continuous support"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We provide a comprehensive range of technical services",
+    "webDevelopment": {
+      "title": "Web Development",
+      "description": "Developing modern and responsive websites using the latest technologies",
+      "features": [
+        "React.js & Next.js",
+        "Node.js & Express",
+        "MongoDB & PostgreSQL",
+        "REST APIs"
+      ]
+    },
+    "webDesign": {
+      "title": "Web Design",
+      "description": "Attractive and modern designs that reflect your brand identity",
+      "features": [
+        "UI/UX Design",
+        "Responsive Design",
+        "Brand Identity",
+        "Prototyping"
+      ]
+    },
+    "mobileApps": {
+      "title": "Mobile Apps",
+      "description": "Mobile application development for iOS and Android systems",
+      "features": [
+        "React Native",
+        "Flutter",
+        "iOS & Android",
+        "Cross-platform"
+      ]
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "description": "Integrated e-commerce platforms to grow your business",
+      "features": [
+        "Shopify",
+        "WooCommerce",
+        "Payment Integration",
+        "Inventory Management"
+      ]
+    },
+    "seo": {
+      "title": "SEO",
+      "description": "Optimize your site to top Google search results",
+      "features": [
+        "Keyword Research",
+        "On-page SEO",
+        "Technical SEO",
+        "Analytics"
+      ]
+    },
+    "maintenance": {
+      "title": "Maintenance & Support",
+      "description": "Continuous maintenance and technical support services for your websites and applications",
+      "features": [
+        "Bug Fixes",
+        "Updates",
+        "24/7 Support",
+        "Performance Optimization"
+      ]
+    },
+    "process": {
+      "title": "How We Work",
+      "subtitle": "We follow a structured approach to ensure your project's success",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Discovery",
+          "description": "We analyze your requirements and understand your goals"
+        },
+        {
+          "step": "02",
+          "title": "Planning",
+          "description": "We create a comprehensive strategy for the project"
+        },
+        {
+          "step": "03",
+          "title": "Design",
+          "description": "We design attractive and user-friendly interfaces"
+        },
+        {
+          "step": "04",
+          "title": "Development",
+          "description": "We build the technical solution using best practices"
+        },
+        {
+          "step": "05",
+          "title": "Testing",
+          "description": "We thoroughly test quality and performance"
+        },
+        {
+          "step": "06",
+          "title": "Launch",
+          "description": "We launch the project with continuous support"
+        }
+      ]
+    },
+    "technologies": {
+      "title": "Technologies We Use",
+      "subtitle": "We work with the latest technologies and tools to ensure high quality",
+      "react": "React",
+      "vue": "Vue.js",
+      "node": "Node.js",
+      "python": "Python",
+      "mongodb": "MongoDB",
+      "postgresql": "PostgreSQL",
+      "docker": "Docker",
+      "aws": "AWS",
+      "figma": "Figma",
+      "tailwind": "TailwindCSS",
+      "typescript": "TypeScript",
+      "nextjs": "Next.js"
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "Contact us today and get a free consultation about your project",
+      "startProject": "Start Your Project",
+      "viewProjects": "See Our Work"
+    }
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Meet our distinguished team members",
+    "roles": {
+      "fullstack": "Full Stack Developer",
+      "frontend": "Frontend Developer",
+      "backend": "Backend Developer",
+      "ui": "UI Designer",
+      "ux": "UX Designer",
+      "manager": "Project Manager"
+    },
+    "members": {
+      "ahmed": {
+        "name": "Ahmed Ali",
+        "bio": "Experienced full-stack developer specializing in React and Node.js."
+      },
+      "fatima": {
+        "name": "Fatima Alzahra",
+        "bio": "Professional UI designer creating attractive designs."
+      },
+      "mohammed": {
+        "name": "Mohammed Saeed",
+        "bio": "Backend specialist with experience in Python and Django."
+      },
+      "sara": {
+        "name": "Sara Mohammed",
+        "bio": "Skilled frontend developer in Vue.js and Nuxt.js."
+      },
+      "omar": {
+        "name": "Omar Hassan",
+        "bio": "Project manager experienced in leading teams and project execution."
+      },
+      "layla": {
+        "name": "Layla Mahmoud",
+        "bio": "UX designer focusing on simplicity and usability."
+      }
+    },
+    "joinUs": {
+      "title": "Join Our Team",
+      "description": "We are always looking for talented individuals to join our exceptional team and help build a better future.",
+      "creativeEnvironment": {
+        "title": "Creative Environment",
+        "desc": "We work in an environment that encourages innovation and out-of-the-box thinking."
+      },
+      "continuousDevelopment": {
+        "title": "Continuous Development",
+        "desc": "We provide opportunities to learn new skills and develop personal and professional abilities."
+      },
+      "teamwork": {
+        "title": "Teamwork",
+        "desc": "We work together as one team to achieve common goals."
+      },
+      "sendCV": "Send Your CV"
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Work we're proud of",
+    "viewProject": "View Project",
+    "visitSite": "Visit Site",
+    "categories": {
+      "all": "All",
+      "website": "Websites",
+      "mobile": "Mobile Apps",
+      "ecommerce": "E-commerce",
+      "corporate": "Corporate"
+    },
+    "featured": "Featured",
+    "noProjectsTitle": "No Projects",
+    "noProjectsDesc": "There are currently no projects in this category",
+    "ctaTitle": "Like our work?",
+    "ctaDesc": "We're ready to turn your idea into a successful project. Contact us today and let's start working on your next project",
+    "ctaButton": "Start Your Project With Us"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a project? Let us help you achieve it",
+    "form": {
+      "sendMessageTitle": "Send Us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number (optional)",
+      "subject": "Subject",
+      "subjectPlaceholder": "Enter the subject of your message",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred while sending the message. Please try again."
+    },
+    "info": {
+      "address": "Address",
+      "addressValue": "Syria, Damascus , almalky",
+      "phone": "Phone",
+      "phoneValue": "+963 XXX XXX XXX",
+      "email": "Email",
+      "emailValue": "info@shiftstart.com",
+      "hours": "Working Hours",
+      "hoursValue": "Monday - Friday, 9 AM - 5 PM"
+    },
+    "mapLabel": "Map showing our office location",
+    "mapTitle": "Office Location on Google Maps",
+    "followUs": "Follow Us on Social Media"
+  },
+  "footer": {
+    "description": "Shift Start Team - A shift in development and design world",
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "contact": "Contact Information",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "language": "Language"
+  },
+  "seo": {
+    "home": {
+      "title": "Shift Start | Web Development Team",
+      "description": "Shift Start team for web development and design. We provide design and development services with high professionalism."
+    },
+    "about": {
+      "title": "About Us - Shift Start",
+      "description": "Meet Shift Start team, a group of creative developers and designers specializing in web development."
+    },
+    "team": {
+      "title": "Our Team - Shift Start",
+      "description": "Meet the distinguished and highly experienced members of the Shift Start team."
+    },
+    "projects": {
+      "title": "Our Projects - Shift Start",
+      "description": "Browse a collection of the best projects executed by the Shift Start team in web development and app design."
+    },
+    "contact": {
+      "title": "Contact Us - Shift Start",
+      "description": "Contact the Shift Start team to discuss your upcoming web development and design project."
+    },
+    "info": {
+  "address": "Address",
+  "addressValue": "Syria, Damascus",
+  "phone": "Phone",
+  "phoneValue": "+963 XXX XXX XXX",
+  "email": "Email",
+  "emailValue": "info@shiftstart.com",
+  "hours": "Working Hours",
+  "hoursValue": "Monday - Friday, 9 AM - 5 PM"
+}
+
+  },
+  "stat": {
+    "projects": "Completed Projects",
+    "clients": "Happy Clients",
+    "years": "Years of Experience",
+    "support": "Technical Support"
+  },
+  "callToAction": {
+    "title": "Have a project idea?",
+    "description": "We are here to help you turn your ideas into a distinguished digital reality. Contact us today and let's start the success journey together.",
+    "button": "Start Your Project Now"
+  },
+  
+  "register": {
+    "title": "Create Account",
+    "subtitle": "Fill in the following details to create a new account",
+    "name": "Name",
+    "name_placeholder": "Enter your full name",
+    "email": "Email",
+    "password": "Password",
+    "create_account": "Create Account",
+    "creating": "Creating account...",
+    "success": "Account created successfully",
+    "failed": "An error occurred while creating the account",
+    "already_have_account": "Already have an account?",
+    "sign_in": "Sign in"
+  }
+
+
+}
