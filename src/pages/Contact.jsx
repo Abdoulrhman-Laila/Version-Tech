@@ -83,6 +83,7 @@ const Contact = () => {
       ),
       title: t('contact.info.phone'),
       value: t('contact.info.phoneValue'),
+      href: 'tel:+963982187269',
     },
     {
       icon: (
@@ -189,7 +190,16 @@ const Contact = () => {
                 <div className={infoIconWrap}>{info.icon}</div>
                 <h3 className="mb-2 font-semibold text-primary-900 dark:text-primary-50">{info.title}</h3>
                 <p className="whitespace-pre-line text-sm leading-relaxed text-primary-700/95 dark:text-primary-200/85">
-                  {info.value}
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="font-semibold text-primary-800 underline-offset-4 transition-colors hover:text-primary-600 hover:underline dark:text-primary-100 dark:hover:text-primary-200"
+                    >
+                      {info.value}
+                    </a>
+                  ) : (
+                    info.value
+                  )}
                 </p>
               </motion.div>
             ))}

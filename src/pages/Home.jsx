@@ -96,69 +96,6 @@ const Home = () => {
 
   const isArabic = (i18n.language?.split('-')?.[0] || 'ar') === 'ar';
 
-  const books = [
-    {
-      key: 'lean-startup',
-      title: 'The Lean Startup',
-      author: 'Eric Ries',
-      tag: isArabic ? 'ريادة الأعمال' : 'Startups',
-      why: isArabic
-        ? 'مناسب لبناء منتج بسرعة، اختبار الفرضيات، وتقليل الهدر.'
-        : 'Great for building fast, validating ideas, and reducing waste.',
-      href: 'https://www.goodreads.com/book/show/10127019-the-lean-startup',
-    },
-    {
-      key: 'inspired',
-      title: 'INSPIRED',
-      author: 'Marty Cagan',
-      tag: isArabic ? 'المنتج' : 'Product',
-      why: isArabic
-        ? 'يركّز على بناء منتجات يحبها العملاء وكيف يشتغل فريق المنتج.'
-        : 'How product teams build products customers love.',
-      href: 'https://www.goodreads.com/book/show/35249663-inspired',
-    },
-    {
-      key: 'hooked',
-      title: 'Hooked',
-      author: 'Nir Eyal',
-      tag: isArabic ? 'تجربة المستخدم' : 'UX',
-      why: isArabic
-        ? 'يبني فهمًا عمليًا لعادات المستخدم دون مبالغة في التعقيد.'
-        : 'A practical model for user habits (without overcomplication).',
-      href: 'https://www.goodreads.com/book/show/22668729-hooked',
-    },
-    {
-      key: 'doet',
-      title: 'The Design of Everyday Things',
-      author: 'Don Norman',
-      tag: isArabic ? 'التصميم' : 'Design',
-      why: isArabic
-        ? 'أساسيات التفكير التصميمي وإزالة الاحتكاك في الواجهة.'
-        : 'Foundations of good design and reducing UI friction.',
-      href: 'https://www.goodreads.com/book/show/840.The_Design_of_Everyday_Things',
-    },
-    {
-      key: 'clean-architecture',
-      title: 'Clean Architecture',
-      author: 'Robert C. Martin',
-      tag: isArabic ? 'الهندسة' : 'Engineering',
-      why: isArabic
-        ? 'تنظيم الكود وحدود النظام لتسهيل التطوير والصيانة.'
-        : 'Structuring systems for maintainability and iteration.',
-      href: 'https://www.goodreads.com/book/show/18043011-clean-architecture',
-    },
-    {
-      key: 'zero-to-one',
-      title: 'Zero to One',
-      author: 'Peter Thiel',
-      tag: isArabic ? 'الاستراتيجية' : 'Strategy',
-      why: isArabic
-        ? 'أفكار قوية حول الابتكار وبناء ميزة تنافسية.'
-        : 'Strong ideas on innovation and competitive advantage.',
-      href: 'https://www.goodreads.com/book/show/18050143-zero-to-one',
-    },
-  ];
-
   const heroOrbs = [
     { className: 'left-[8%] top-[15%] h-24 w-24 bg-primary-500/25', delay: '0s' },
     { className: 'right-[12%] top-[28%] h-40 w-40 bg-primary-400/20', delay: '0.8s' },
@@ -191,46 +128,183 @@ const Home = () => {
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="text-center"
+            className={`grid items-center gap-10 text-center md:grid-cols-2 md:text-left ${
+              isArabic ? 'md:text-right' : ''
+            }`}
           >
-            <motion.h1
-              variants={fadeInUp}
-              className="gradient-text mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
-            >
-              {t('hero.title')}
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="mx-auto mb-4 max-w-3xl text-xl font-medium text-primary-800/95 dark:text-primary-100/95 md:text-2xl"
-            >
-              {t('hero.subtitle')}
-            </motion.p>
-
-            <motion.p
-              variants={fadeInUp}
-              className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-primary-700/90 dark:text-primary-200/85 md:text-lg"
-            >
-              {t('hero.description')}
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-            >
-              <Link
-                to="/contact"
-                className="hover-lift inline-flex min-w-[200px] items-center justify-center rounded-xl bg-primary-gradient px-8 py-4 text-lg font-semibold text-primary-50 shadow-medium ring-2 ring-primary-500/25 transition-all duration-300 hover:shadow-lg dark:ring-primary-400/20"
+            {/* Text column */}
+            <div className={`order-1 ${isArabic ? 'md:order-2' : 'md:order-1'}`}>
+              <motion.h1
+                variants={fadeInUp}
+                className="gradient-text mb-6 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl"
               >
-                {t('hero.cta')}
-              </Link>
-              <Link
-                to="/about"
-                className="inline-flex min-w-[200px] items-center justify-center rounded-xl border-2 border-primary-600/80 bg-primary-50/80 px-8 py-4 text-lg font-semibold text-primary-800 transition-all duration-300 hover:border-primary-600 hover:bg-primary-100 dark:border-primary-400/60 dark:bg-primary-900/40 dark:text-primary-100 dark:hover:bg-primary-800/60"
+                {t('hero.title')}
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="mb-4 max-w-3xl text-xl font-medium text-primary-800/95 dark:text-primary-100/95 md:mx-0 md:text-2xl"
               >
-                {t('hero.learnMore')}
-              </Link>
-            </motion.div>
+                {t('hero.subtitle')}
+              </motion.p>
+
+              <motion.p
+                variants={fadeInUp}
+                className="mb-8 max-w-2xl text-base leading-relaxed text-primary-700/90 dark:text-primary-200/85 md:mx-0 md:text-lg"
+              >
+                {t('hero.description')}
+              </motion.p>
+
+              <motion.div
+                variants={fadeInUp}
+                className={`flex flex-col items-center justify-center gap-4 sm:flex-row ${
+                  isArabic ? 'md:items-end md:justify-end' : 'md:items-start md:justify-start'
+                }`}
+              >
+                <Link
+                  to="/contact"
+                  className="hover-lift inline-flex min-w-[200px] items-center justify-center rounded-xl bg-primary-gradient px-8 py-4 text-lg font-semibold text-primary-50 shadow-medium ring-2 ring-primary-500/25 transition-all duration-300 hover:shadow-lg dark:ring-primary-400/20"
+                >
+                  {t('hero.cta')}
+                </Link>
+                <Link
+                  to="/about"
+                  className="inline-flex min-w-[200px] items-center justify-center rounded-xl border-2 border-primary-600/80 bg-primary-50/80 px-8 py-4 text-lg font-semibold text-primary-800 transition-all duration-300 hover:border-primary-600 hover:bg-primary-100 dark:border-primary-400/60 dark:bg-primary-900/40 dark:text-primary-100 dark:hover:bg-primary-800/60"
+                >
+                  {t('hero.learnMore')}
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Laptop column */}
+            <div
+              className={`order-2 flex justify-center ${
+                isArabic ? 'md:order-1 md:justify-start' : 'md:order-2 md:justify-end'
+              }`}
+            >
+              <motion.div variants={fadeInUp}>
+                <motion.div
+                  className="relative origin-center"
+                  animate={{
+                    y: [0, -12, 0],
+                    rotate: [-1.5, 1.5, -1.5],
+                  }}
+                  transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <span className="sr-only">
+                    {isArabic
+                      ? 'رسوم متحركة: لابتوب ورمز برمجة'
+                      : 'Animation: laptop and code motif'}
+                  </span>
+                  <svg
+                    viewBox="0 0 320 220"
+                    className="h-auto w-[min(100%,18rem)] drop-shadow-[0_20px_40px_rgba(30,58,138,0.22)] dark:drop-shadow-[0_20px_45px_rgba(77,59,255,0.18)] md:w-[22rem]"
+                    role="img"
+                    aria-hidden
+                  >
+                    <defs>
+                      <linearGradient id="lapScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#141a3a" />
+                        <stop offset="100%" stopColor="#1e3a8a" />
+                      </linearGradient>
+                      <linearGradient id="lapGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#6f6af0" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#4d3bff" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    {/* ظل تحت الجهاز */}
+                    <ellipse
+                      cx="160"
+                      cy="208"
+                      rx="88"
+                      ry="8"
+                      fill="currentColor"
+                      className="text-primary-900/15 dark:text-primary-900/35"
+                    />
+                    {/* القاعدة (لوحة المفاتيح) */}
+                    <path
+                      d="M32 168 L288 168 Q300 168 300 178 L296 188 Q294 196 284 196 L36 196 Q26 196 24 188 L20 178 Q20 168 32 168 Z"
+                      fill="currentColor"
+                      className="text-primary-200/95 dark:text-primary-700/90"
+                    />
+                    <path
+                      d="M48 176 L272 176"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeOpacity="0.25"
+                      className="text-primary-800 dark:text-primary-300"
+                    />
+                    {/* الشاشة — الإطار */}
+                    <rect
+                      x="40"
+                      y="28"
+                      width="240"
+                      height="150"
+                      rx="10"
+                      fill="currentColor"
+                      className="text-primary-300/90 dark:text-primary-600/80"
+                    />
+                    <rect x="48" y="36" width="224" height="126" rx="6" fill="url(#lapScreen)" />
+                    {/* وهج يتحرك على الشاشة */}
+                    <motion.rect
+                      x="52"
+                      y="40"
+                      width="216"
+                      height="36"
+                      rx="4"
+                      fill="url(#lapGlow)"
+                      animate={{ y: [40, 118, 40] }}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'linear' }}
+                    />
+                    {/* خطوط كود بسيطة داخل الشاشة */}
+                    {[0, 1, 2, 3].map((i) => (
+                      <motion.rect
+                        key={i}
+                        x={58 + i * 6}
+                        y={52 + i * 18}
+                        width={140 - i * 12}
+                        height="4"
+                        rx="2"
+                        fill="currentColor"
+                        className="text-primary-300/70 dark:text-primary-400/60"
+                        animate={{ opacity: [0.35, 1, 0.35] }}
+                        transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.25 }}
+                      />
+                    ))}
+                    <text
+                      x="160"
+                      y="128"
+                      textAnchor="middle"
+                      fill="currentColor"
+                      className="text-[10px] font-mono font-semibold text-primary-200/90 dark:text-primary-100/90"
+                    >
+                      {'</>'}
+                    </text>
+                    <motion.rect
+                      x="178"
+                      y="116"
+                      width="3"
+                      height="14"
+                      rx="1"
+                      fill="currentColor"
+                      className="text-primary-200 dark:text-primary-100"
+                      animate={{ opacity: [1, 1, 0, 0] }}
+                      transition={{ duration: 1.1, repeat: Infinity, ease: 'linear' }}
+                    />
+                    {/* مفصلة بسيطة */}
+                    <rect
+                      x="150"
+                      y="176"
+                      width="20"
+                      height="4"
+                      rx="2"
+                      fill="currentColor"
+                      className="text-primary-400/70 dark:text-primary-500/60"
+                    />
+                  </svg>
+                </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
@@ -238,7 +312,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 transform z-0 pointer-events-none"
         >
           <div className="flex h-10 w-6 justify-center rounded-full border-2 border-primary-600/70 dark:border-primary-400/60">
             <div className="mt-2 h-2 w-1 animate-bounce rounded-full bg-primary-600 dark:bg-primary-400" />
@@ -298,16 +372,28 @@ const Home = () => {
 
       {/* Featured projects — uses API data; styled with primary + glass */}
       {featuredProjects.length > 0 && (
-        <section className="section-padding border-y border-primary-200/60 bg-white/70 dark:border-primary-800/50 dark:bg-primary-900/30">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          className="section-padding border-y border-primary-200/60 bg-white/70 dark:border-primary-800/50 dark:bg-primary-900/30"
+        >
           <div className="container-custom">
-            <div className="mb-12 text-center">
-              <h2 className="gradient-text mb-3 text-3xl font-bold tracking-tight md:text-4xl">
+            <motion.div variants={fadeInUp} className="mb-12 text-center">
+              <motion.h2
+                variants={fadeInUp}
+                className="gradient-text mb-3 text-3xl font-bold tracking-tight md:text-4xl"
+              >
                 {t('projects.title')}
-              </h2>
-              <p className="mx-auto max-w-2xl text-primary-700/90 dark:text-primary-200/85">
+              </motion.h2>
+              <motion.p
+                variants={fadeInUp}
+                className="mx-auto max-w-2xl text-primary-700/90 dark:text-primary-200/85"
+              >
                 {t('projects.subtitle')}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {featuredProjects.map((project, index) => (
                 <motion.div
@@ -352,85 +438,24 @@ const Home = () => {
               ))}
             </div>
             <div className="mt-10 text-center">
-              <Link
-                to="/projects"
-                className="hover-lift inline-flex items-center justify-center rounded-xl border-2 border-primary-600/50 bg-primary-50 px-6 py-3 font-semibold text-primary-800 transition-colors hover:border-primary-600 hover:bg-primary-100 dark:border-primary-500/40 dark:bg-primary-900/50 dark:text-primary-100 dark:hover:bg-primary-800/70"
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex"
               >
-                {t('nav.projects')}
-              </Link>
+                <Link
+                  to="/projects"
+                  className="hover-lift inline-flex items-center justify-center rounded-xl border-2 border-primary-600/50 bg-primary-50 px-6 py-3 font-semibold text-primary-800 transition-colors hover:border-primary-600 hover:bg-primary-100 dark:border-primary-500/40 dark:bg-primary-900/50 dark:text-primary-100 dark:hover:bg-primary-800/70"
+                >
+                  {t('nav.projects')}
+                </Link>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
-
-      {/* Books — curated for Version‑Tech / Shift Start */}
-      <section className="section-padding bg-primary-50/90 dark:bg-primary-900/40">
-        <div className="container-custom">
-          <div className="mb-12 text-center">
-            <h2 className="gradient-text mb-3 text-3xl font-bold tracking-tight md:text-4xl">
-              {isArabic ? 'مكتبة Version‑Tech' : 'Version‑Tech Library'}
-            </h2>
-            <p className="mx-auto max-w-3xl text-primary-700/90 dark:text-primary-200/85">
-              {isArabic
-                ? 'كتب مختارة تساعد فريق Shift Start على بناء منتجات، تجربة مستخدم، وهندسة أفضل.'
-                : 'Hand-picked books to help Shift Start build better products, UX, and engineering.'}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {books.map((book, index) => (
-              <motion.a
-                key={book.key}
-                href={book.href}
-                target="_blank"
-                rel="noreferrer"
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.06 }}
-                className="card hover-lift group block overflow-hidden p-6 shadow-soft"
-              >
-                <div className="mb-4 flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-gradient text-primary-50 shadow-md shadow-primary-900/15 ring-2 ring-primary-500/20 dark:ring-primary-400/25">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M12 6.5c-2.5-1.8-6-1.8-8.5 0v13c2.5-1.8 6-1.8 8.5 0m0-16c2.5-1.8 6-1.8 8.5 0v13c-2.5-1.8-6-1.8-8.5 0m0-16v16" />
-                      </svg>
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="line-clamp-2 text-lg font-bold text-primary-900 transition-colors group-hover:text-primary-800 dark:text-primary-50 dark:group-hover:text-primary-100">
-                        {book.title}
-                      </h3>
-                      <p className="mt-0.5 text-sm font-medium text-primary-600/95 dark:text-primary-300/90">
-                        {book.author}
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="shrink-0 rounded-full border border-primary-300/60 bg-primary-100/80 px-3 py-1 text-xs font-semibold text-primary-900 dark:border-primary-600/50 dark:bg-primary-800/50 dark:text-primary-100">
-                    {book.tag}
-                  </span>
-                </div>
-
-                <p className="text-sm leading-relaxed text-primary-700/95 dark:text-primary-200/85">
-                  {book.why}
-                </p>
-
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-primary-700 dark:text-primary-200">
-                    {isArabic ? 'عرض الكتاب' : 'View book'}
-                  </span>
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-primary-200/80 bg-primary-50/80 text-primary-700 transition group-hover:bg-primary-100 dark:border-primary-600/50 dark:bg-primary-900/50 dark:text-primary-200 dark:group-hover:bg-primary-800/60">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Stats */}
       <section className="section-padding bg-primary-gradient text-primary-50 shadow-inner">
@@ -463,18 +488,32 @@ const Home = () => {
             transition={{ duration: 0.55 }}
             className="glass rounded-3xl border border-primary-200/70 p-10 text-center shadow-medium dark:border-primary-600/40 md:p-14"
           >
-            <h2 className="gradient-text mb-6 text-3xl font-bold tracking-tight md:text-4xl">
-              {t('callToAction.title')}
-            </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-primary-800/90 dark:text-primary-100/85">
-              {t('callToAction.description')}
-            </p>
-            <Link
-              to="/contact"
-              className="hover-lift inline-flex items-center justify-center rounded-xl bg-primary-gradient px-8 py-4 text-lg font-semibold text-primary-50 shadow-medium ring-2 ring-primary-500/30 transition-all duration-300 hover:shadow-lg dark:ring-primary-300/25"
+            <motion.h2
+              variants={fadeInUp}
+              className="gradient-text mb-6 text-3xl font-bold tracking-tight md:text-4xl"
             >
-              {t('callToAction.button')}
-            </Link>
+              {t('callToAction.title')}
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="mx-auto mb-8 max-w-2xl text-lg text-primary-800/90 dark:text-primary-100/85"
+            >
+              {t('callToAction.description')}
+            </motion.p>
+            <motion.div
+              variants={fadeInUp}
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="inline-flex"
+            >
+              <Link
+                to="/contact"
+                className="hover-lift inline-flex items-center justify-center rounded-xl bg-primary-gradient px-8 py-4 text-lg font-semibold text-primary-50 shadow-medium ring-2 ring-primary-500/30 transition-all duration-300 hover:shadow-lg dark:ring-primary-300/25"
+              >
+                {t('callToAction.button')}
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
