@@ -42,18 +42,24 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-primary-100/95 to-primary-200/80 dark:from-primary-900 dark:via-primary-800 dark:to-primary-900">
       <Helmet>
         <title>{t('register.title')} - Shift Start</title>
       </Helmet>
 
-      <div className="max-w-md w-full space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(111,106,240,0.22),transparent)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(77,59,255,0.18),transparent)]" />
+        <div className="absolute -left-16 top-24 h-56 w-56 rounded-full bg-primary-500/15 blur-3xl dark:bg-primary-600/10" />
+        <div className="absolute -right-16 bottom-20 h-48 w-48 rounded-full bg-primary-400/20 blur-3xl dark:bg-primary-500/10" />
+      </div>
+
+      <div className="glass relative z-10 mx-4 w-full max-w-md space-y-8 rounded-2xl p-8 shadow-medium ring-1 ring-primary-500/10 dark:ring-primary-400/15">
         <div className="text-center">
           <img src="/images/logo.png" alt="logo" className="mx-auto mb-4 w-20" />
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="gradient-text text-3xl font-bold tracking-tight">
             {t('register.title')}
           </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-primary-700/90 dark:text-primary-200/85">
             {t('register.subtitle')}
           </p>
         </div>
@@ -61,7 +67,7 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="mb-2 block text-sm font-medium text-primary-900 dark:text-primary-100">
               {t('register.name')}
             </label>
             <input
@@ -70,14 +76,14 @@ const Register = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="form-input"
               placeholder={t('register.name_placeholder')}
             />
           </div>
 
           {/* Email Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="mb-2 block text-sm font-medium text-primary-900 dark:text-primary-100">
               {t('register.email')}
             </label>
             <input
@@ -86,14 +92,14 @@ const Register = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="form-input"
               placeholder="you@example.com"
             />
           </div>
 
           {/* Password Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="mb-2 block text-sm font-medium text-primary-900 dark:text-primary-100">
               {t('register.password')}
             </label>
             <input
@@ -102,7 +108,7 @@ const Register = () => {
               required
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-red dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              className="form-input"
               placeholder="••••••••"
             />
           </div>
@@ -111,7 +117,7 @@ const Register = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-brand-gradient text-white py-2 px-4 rounded-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+            className="btn-gradient hover-lift w-full py-3 disabled:pointer-events-none disabled:opacity-50"
           >
             {loading ? t('register.creating') : t('register.create_account')}
           </button>
@@ -121,7 +127,7 @@ const Register = () => {
         <div className="text-center mt-4">
           <button
             onClick={() => navigate('/login')}
-            className="text-brand-red hover:underline"
+            className="text-primary-700 underline decoration-primary-300/60 underline-offset-4 transition hover:text-primary-800 dark:text-primary-200 dark:hover:text-primary-100"
           >
             {t('register.already_have_account')} {t('register.sign_in')}
           </button>
@@ -131,13 +137,13 @@ const Register = () => {
         <div className="flex justify-center gap-2 mt-4">
           <button
             onClick={() => i18n.changeLanguage('ar')}
-            className="px-2 py-1 rounded bg-gray-200"
+            className="btn-outline btn-sm"
           >
             عربي
           </button>
           <button
             onClick={() => i18n.changeLanguage('en')}
-            className="px-2 py-1 rounded bg-gray-200"
+            className="btn-outline btn-sm"
           >
             EN
           </button>
@@ -145,7 +151,7 @@ const Register = () => {
 
         {/* Loading Overlay */}
         {loading && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary-900/45 backdrop-blur-sm dark:bg-primary-900/70">
             <LoadingSpinner />
           </div>
         )}
