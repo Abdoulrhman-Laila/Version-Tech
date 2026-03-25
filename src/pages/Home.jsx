@@ -94,6 +94,71 @@ const Home = () => {
     { number: '24/7', key: 'support' },
   ];
 
+  const isArabic = (i18n.language?.split('-')?.[0] || 'ar') === 'ar';
+
+  const books = [
+    {
+      key: 'lean-startup',
+      title: 'The Lean Startup',
+      author: 'Eric Ries',
+      tag: isArabic ? 'ريادة الأعمال' : 'Startups',
+      why: isArabic
+        ? 'مناسب لبناء منتج بسرعة، اختبار الفرضيات، وتقليل الهدر.'
+        : 'Great for building fast, validating ideas, and reducing waste.',
+      href: 'https://www.goodreads.com/book/show/10127019-the-lean-startup',
+    },
+    {
+      key: 'inspired',
+      title: 'INSPIRED',
+      author: 'Marty Cagan',
+      tag: isArabic ? 'المنتج' : 'Product',
+      why: isArabic
+        ? 'يركّز على بناء منتجات يحبها العملاء وكيف يشتغل فريق المنتج.'
+        : 'How product teams build products customers love.',
+      href: 'https://www.goodreads.com/book/show/35249663-inspired',
+    },
+    {
+      key: 'hooked',
+      title: 'Hooked',
+      author: 'Nir Eyal',
+      tag: isArabic ? 'تجربة المستخدم' : 'UX',
+      why: isArabic
+        ? 'يبني فهمًا عمليًا لعادات المستخدم دون مبالغة في التعقيد.'
+        : 'A practical model for user habits (without overcomplication).',
+      href: 'https://www.goodreads.com/book/show/22668729-hooked',
+    },
+    {
+      key: 'doet',
+      title: 'The Design of Everyday Things',
+      author: 'Don Norman',
+      tag: isArabic ? 'التصميم' : 'Design',
+      why: isArabic
+        ? 'أساسيات التفكير التصميمي وإزالة الاحتكاك في الواجهة.'
+        : 'Foundations of good design and reducing UI friction.',
+      href: 'https://www.goodreads.com/book/show/840.The_Design_of_Everyday_Things',
+    },
+    {
+      key: 'clean-architecture',
+      title: 'Clean Architecture',
+      author: 'Robert C. Martin',
+      tag: isArabic ? 'الهندسة' : 'Engineering',
+      why: isArabic
+        ? 'تنظيم الكود وحدود النظام لتسهيل التطوير والصيانة.'
+        : 'Structuring systems for maintainability and iteration.',
+      href: 'https://www.goodreads.com/book/show/18043011-clean-architecture',
+    },
+    {
+      key: 'zero-to-one',
+      title: 'Zero to One',
+      author: 'Peter Thiel',
+      tag: isArabic ? 'الاستراتيجية' : 'Strategy',
+      why: isArabic
+        ? 'أفكار قوية حول الابتكار وبناء ميزة تنافسية.'
+        : 'Strong ideas on innovation and competitive advantage.',
+      href: 'https://www.goodreads.com/book/show/18050143-zero-to-one',
+    },
+  ];
+
   const heroOrbs = [
     { className: 'left-[8%] top-[15%] h-24 w-24 bg-primary-500/25', delay: '0s' },
     { className: 'right-[12%] top-[28%] h-40 w-40 bg-primary-400/20', delay: '0.8s' },
@@ -297,6 +362,75 @@ const Home = () => {
           </div>
         </section>
       )}
+
+      {/* Books — curated for Version‑Tech / Shift Start */}
+      <section className="section-padding bg-primary-50/90 dark:bg-primary-900/40">
+        <div className="container-custom">
+          <div className="mb-12 text-center">
+            <h2 className="gradient-text mb-3 text-3xl font-bold tracking-tight md:text-4xl">
+              {isArabic ? 'مكتبة Version‑Tech' : 'Version‑Tech Library'}
+            </h2>
+            <p className="mx-auto max-w-3xl text-primary-700/90 dark:text-primary-200/85">
+              {isArabic
+                ? 'كتب مختارة تساعد فريق Shift Start على بناء منتجات، تجربة مستخدم، وهندسة أفضل.'
+                : 'Hand-picked books to help Shift Start build better products, UX, and engineering.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {books.map((book, index) => (
+              <motion.a
+                key={book.key}
+                href={book.href}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                className="card hover-lift group block overflow-hidden p-6 shadow-soft"
+              >
+                <div className="mb-4 flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-gradient text-primary-50 shadow-md shadow-primary-900/15 ring-2 ring-primary-500/20 dark:ring-primary-400/25">
+                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M12 6.5c-2.5-1.8-6-1.8-8.5 0v13c2.5-1.8 6-1.8 8.5 0m0-16c2.5-1.8 6-1.8 8.5 0v13c-2.5-1.8-6-1.8-8.5 0m0-16v16" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="line-clamp-2 text-lg font-bold text-primary-900 transition-colors group-hover:text-primary-800 dark:text-primary-50 dark:group-hover:text-primary-100">
+                        {book.title}
+                      </h3>
+                      <p className="mt-0.5 text-sm font-medium text-primary-600/95 dark:text-primary-300/90">
+                        {book.author}
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="shrink-0 rounded-full border border-primary-300/60 bg-primary-100/80 px-3 py-1 text-xs font-semibold text-primary-900 dark:border-primary-600/50 dark:bg-primary-800/50 dark:text-primary-100">
+                    {book.tag}
+                  </span>
+                </div>
+
+                <p className="text-sm leading-relaxed text-primary-700/95 dark:text-primary-200/85">
+                  {book.why}
+                </p>
+
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-primary-700 dark:text-primary-200">
+                    {isArabic ? 'عرض الكتاب' : 'View book'}
+                  </span>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-primary-200/80 bg-primary-50/80 text-primary-700 transition group-hover:bg-primary-100 dark:border-primary-600/50 dark:bg-primary-900/50 dark:text-primary-200 dark:group-hover:bg-primary-800/60">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Stats */}
       <section className="section-padding bg-primary-gradient text-primary-50 shadow-inner">

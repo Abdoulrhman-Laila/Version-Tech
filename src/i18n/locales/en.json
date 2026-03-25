@@ -9,7 +9,7 @@
   },
   "hero": {
     "title": "A Shift in Development",
-    "subtitle": "Shift Start team specialized in web development and design using cutting-edge technologies",
+    "subtitle": "Version-tech team specialized in web development and design using cutting-edge technologies",
     "description": "We are a passionate technology team, providing innovative solutions and attractive designs that meet our clients' needs and achieve their digital goals",
     "cta": "Contact Us",
     "learnMore": "Learn More"
@@ -17,7 +17,7 @@
   "about": {
     "title": "About Us",
     "subtitle": "Professional team specialized in development",
-    "description": "We are Shift Start team, a group of creative developers and designers who strive to provide the best technical solutions. We believe that every project is a new beginning and an opportunity for creativity and excellence.",
+    "description": "We are version-tech team, a group of creative developers and designers who strive to provide the best technical solutions. We believe that every project is a new beginning and an opportunity for creativity and excellence.",
     "storyTitle": "Our Story",
     "additionalText": "We are a team of creative developers and designers who share one passion: delivering the best technical solutions. We believe in the power of technology to transform businesses and improve people's lives.",
     "yearsExperience": "Years of Experience",
@@ -276,7 +276,7 @@
     "followUs": "Follow Us on Social Media"
   },
   "footer": {
-    "description": "Shift Start Team - A shift in development and design world",
+    "description": "version-tech Team - A shift in development and design world",
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "contact": "Contact Information",
@@ -306,24 +306,24 @@
   },
   "seo": {
     "home": {
-      "title": "Shift Start | Web Development Team",
-      "description": "Shift Start team for web development and design. We provide design and development services with high professionalism."
+      "title": "version-tech | Web Development Team",
+      "description": "version-tech team for web development and design. We provide design and development services with high professionalism."
     },
     "about": {
-      "title": "About Us - Shift Start",
-      "description": "Meet Shift Start team, a group of creative developers and designers specializing in web development."
+      "title": "About Us - version-tech",
+      "description": "Meet version-tech team, a group of creative developers and designers specializing in web development."
     },
     "team": {
-      "title": "Our Team - Shift Start",
-      "description": "Meet the distinguished and highly experienced members of the Shift Start team."
+      "title": "Our Team - version-tech",
+      "description": "Meet the distinguished and highly experienced members of the version-tech team."
     },
     "projects": {
-      "title": "Our Projects - Shift Start",
-      "description": "Browse a collection of the best projects executed by the Shift Start team in web development and app design."
+      "title": "Our Projects - version-tech",
+      "description": "Browse a collection of the best projects executed by the version-tech team in web development and app design."
     },
     "contact": {
-      "title": "Contact Us - Shift Start",
-      "description": "Contact the Shift Start team to discuss your upcoming web development and design project."
+      "title": "Contact Us - version-tech",
+      "description": "Contact the version-tech team to discuss your upcoming web development and design project."
     },
     "info": {
   "address": "Address",
