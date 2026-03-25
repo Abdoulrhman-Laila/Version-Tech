@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { authAPI } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import logoImage from '../assets/images/logo.jpeg';
 
 const Register = () => {
   const { t, i18n } = useTranslation();
@@ -53,9 +54,17 @@ const Register = () => {
         <div className="absolute -right-16 bottom-20 h-48 w-48 rounded-full bg-primary-400/20 blur-3xl dark:bg-primary-500/10" />
       </div>
 
-      <div className="glass relative z-10 mx-4 w-full max-w-md space-y-8 rounded-2xl p-8 shadow-medium ring-1 ring-primary-500/10 dark:ring-primary-400/15">
+      <div className="glass relative z-10 mx-4 w-full max-w-md space-y-7 rounded-2xl p-8 shadow-medium ring-1 ring-primary-500/10 dark:ring-primary-400/15">
         <div className="text-center">
-          <img src="/images/logo.png" alt="logo" className="mx-auto mb-4 w-20" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-primary-gradient p-1 shadow-soft ring-2 ring-primary-300/35 dark:ring-primary-500/30">
+            <img
+              src={logoImage}
+              alt="Version-Tech"
+              className="h-full w-full rounded-[14px] bg-primary-900/90 object-contain"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <h2 className="gradient-text text-3xl font-bold tracking-tight">
             {t('register.title')}
           </h2>
@@ -64,7 +73,7 @@ const Register = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Name Field */}
           <div>
             <label className="mb-2 block text-sm font-medium text-primary-900 dark:text-primary-100">
@@ -111,6 +120,9 @@ const Register = () => {
               className="form-input"
               placeholder="••••••••"
             />
+            <p className="mt-2 text-xs font-medium text-primary-600/90 dark:text-primary-300/90">
+              {i18n.language?.startsWith('ar') ? 'استخدم كلمة مرور قوية.' : 'Use a strong password.'}
+            </p>
           </div>
 
           {/* Submit Button */}
@@ -123,8 +135,10 @@ const Register = () => {
           </button>
         </form>
 
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary-300/50 to-transparent dark:via-primary-600/35" />
+
         {/* Login Link */}
-        <div className="text-center mt-4">
+        <div className="text-center">
           <button
             onClick={() => navigate('/login')}
             className="text-primary-700 underline decoration-primary-300/60 underline-offset-4 transition hover:text-primary-800 dark:text-primary-200 dark:hover:text-primary-100"
@@ -134,7 +148,7 @@ const Register = () => {
         </div>
 
         {/* Language Switcher */}
-        <div className="flex justify-center gap-2 mt-4">
+        <div className="flex justify-center gap-2">
           <button
             onClick={() => i18n.changeLanguage('ar')}
             className="btn-outline btn-sm"
