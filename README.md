@@ -1,248 +1,138 @@
-# Shift Start - نقطة تحول
+# Version-Tech — نقطة تحول
 
-موقع ويب احترافي لفريق Shift Start للتطوير والتصميم، مبني باستخدام React و TailwindCSS مع دعم ثنائي اللغة والوضع الليلي.
+موقع ويب احترافي لفريق **Version-Tech** للتطوير والتصميم، مبني بـ **React** و **Vite** و **Tailwind CSS**، مع دعم ثنائي اللغة (عربي / إنجليزي)، الوضع الليلي، ولوحة إدارية لإدارة المحتوى.
 
-![Shift Start](https://img.shields.io/badge/Shift%20Start-نقطة%20تحول-FF3C6E)
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.1.8-38B2AC)
-![Vite](https://img.shields.io/badge/Vite-3.0.7-646CFF)
+![Version-Tech](https://img.shields.io/badge/Version--Tech-نقطة%20تحول-4d3bff)
+![React](https://img.shields.io/badge/React-18-61DAFB)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF)
+![Tailwind](https://img.shields.io/badge/Tailwind-3-38B2AC)
 
-## 🌟 المميزات
+## المميزات
 
-### 🎨 التصميم والواجهة
-- **تصميم حديث وجذاب** مستوحى من ألوان الشعار
-- **دعم كامل للوضع الليلي والنهاري** مع التبديل التلقائي
-- **تصميم متجاوب 100%** يعمل على جميع الأجهزة
-- **تأثيرات بصرية متقدمة** مع Glassmorphism و Gradient effects
-- **رسوم متحركة سلسة** باستخدام Framer Motion
+### التصميم والواجهة
+- تصميم حديث بألوان **Primary** (انظر `tailwind.config.js` و `src/index.css`)
+- دعم **الوضع الليلي / النهاري** مع حفظ التفضيل
+- **RTL / LTR** تلقائي حسب اللغة
+- تأثيرات **glass**، **gradient-text**، وظلال `shadow-soft` / `shadow-medium`
+- رسوم متحركة عبر **Framer Motion**
 
-### 🌐 الدعم اللغوي
-- **دعم ثنائي اللغة** (العربية والإنجليزية)
-- **دعم كامل لـ RTL** مع تخطيط صحيح للنصوص العربية
-- **خطوط محسنة** لكلا اللغتين (Noto Sans Arabic + Inter)
-- **ترجمة ديناميكية** لجميع عناصر الموقع
+### المحتوى واللغات
+- **i18next** — ملفات الترجمة في `src/i18n/locales/`
+- عناوين SEO عبر **react-helmet-async**
 
-### ⚡ الأداء والتقنيات
-- **React 18** مع أحدث الميزات
-- **Vite** لتطوير وبناء سريع
-- **TailwindCSS** للتصميم السريع والمرن
-- **Lazy Loading** للصفحات لتحسين الأداء
-- **تحسين محركات البحث (SEO)** مع React Helmet
-- **Progressive Web App** جاهز
+### الأداء
+- **Vite** للبناء السريع
+- **Lazy loading** لصفحات الموقع العامة في `App.jsx`
 
-### 📱 الصفحات والمكونات
-- **الصفحة الرئيسية** - عرض تقديمي جذاب للفريق
-- **من نحن** - معلومات الفريق والرؤية والرسالة
-- **الخدمات** - عرض شامل للخدمات المقدمة
-- **فريق العمل** - بطاقات تفاعلية لأعضاء الفريق
-- **المشاريع** - معرض للأعمال مع فلترة ديناميكية
-- **تواصل معنا** - نموذج تواصل متكامل مع الخريطة
-- **صفحة 404** - صفحة خطأ إبداعية
+### الصفحات (الواجهة العامة)
+- الرئيسية، من نحن، الخدمات، الفريق، المشاريع، التواصل، التسجيل، 404
 
-## 🚀 البدء السريع
+### لوحة الإدارة
+- مسارات تحت `/admin` (مثال: `/admin/dashboard`, `/admin/team`, `/admin/projects`, `/admin/contacts`)
+- واجهات متصلة بـ API عبر `src/services/api.js` (يتطلب تشغيل الـ backend)
+
+## البدء السريع
 
 ### المتطلبات
-- Node.js 16+ 
-- npm أو yarn
+- **Node.js** 18+ (يُفضّل LTS)
+- **npm**
 
-### التثبيت
+### التثبيت والتشغيل
 
 ```bash
-# استنساخ المشروع
-git clone https://github.com/your-username/shift-start.git
-cd shift-start
-
-# تثبيت التبعيات
+git clone <repository-url>
+cd <project-folder>
 npm install
-
-# تشغيل الخادم المحلي
 npm run dev
-
-# فتح المتصفح على
-http://localhost:3000
 ```
 
-### البناء للإنتاج
+يفتح عادةً على: **http://localhost:5173** (المنفذ الافتراضي لـ Vite).
+
+### البناء والمعاينة
 
 ```bash
-# بناء المشروع
 npm run build
-
-# معاينة البناء
 npm run preview
 ```
 
-## 🎨 نظام الألوان
+### فحص الكود
 
-النظام اللوني مستوحى من شعار Shift Start:
+```bash
+npm run lint
+```
 
-```css
-:root {
-  --brand-red: #FF3C6E;      /* اللون الأحمر الرئيسي */
-  --brand-pink: #D22E9C;     /* البنفسجي الوردي */
-  --brand-purple: #8C1CCB;   /* البنفسجي الغامق */
-  --brand-orange: #FF6A3D;   /* البرتقالي الوردي */
-  --brand-dark: #1C1C1E;     /* الرمادي الداكن */
+## الخلفية (API) — اختياري
+
+يوجد مجلد **`backend/`** يحتوي خادم API للمشروع. راجع `backend/README.md` لتشغيله وربطه بالواجهة.
+
+## نظام الألوان (Tailwind)
+
+الألوان الأساسية معرّفة كسلسلة **`primary`** في `tailwind.config.js`، مع تدرجات مثل `bg-primary-gradient`، واستخدام دوال مساعدة في `src/index.css` (مثل `.card`, `.glass`, `.btn-gradient`).
+
+مثال مختصر:
+
+```js
+// tailwind.config.js — theme.extend.colors.primary
+primary: {
+  500: "#6f6af0",
+  600: "#4d3bff",
+  800: "#1e3a8a",
+  900: "#141a3a",
+  // ...
 }
 ```
 
-## 📁 هيكل المشروع
+## هيكل المشروع (مبسّط)
 
 ```
 src/
-├── components/          # المكونات القابلة لإعادة الاستخدام
-│   ├── Layout/         # مكونات التخطيط (Header, Footer)
-│   └── UI/             # مكونات واجهة المستخدم
-├── contexts/           # السياقات (Context)
-├── i18n/              # ملفات الترجمة
-│   └── locales/       # ملفات اللغات
-├── pages/             # صفحات الموقع
-├── styles/            # ملفات CSS
-└── utils/             # الأدوات المساعدة
+├── assets/              # صور وموارد ثابتة (مثل الشعار)
+├── components/
+│   ├── Layout/          # Header, Footer
+│   └── UI/              # LoadingSpinner وغيرها
+├── contexts/            # AppContext (ثيم، لغة، …)
+├── i18n/
+│   └── locales/         # ar.json, en.json
+├── pages/               # صفحات الموقع
+│   └── Admin/           # لوحة الإدارة
+├── services/            # طلبات API (axios)
+├── App.jsx
+├── main.jsx
+└── index.css            # أنماط عامة + فئات مساعدة
 ```
 
-## 🛠️ التقنيات المستخدمة
+## التقنيات الرئيسية
 
-### Frontend
-- **React 18** - مكتبة JavaScript للواجهات
-- **React Router** - التنقل بين الصفحات
-- **TailwindCSS** - إطار عمل CSS
-- **Framer Motion** - مكتبة الرسوم المتحركة
-- **React Helmet** - إدارة meta tags
-- **React i18next** - نظام الترجمة
-- **React Hot Toast** - إشعارات أنيقة
+| الطبقة | الأدوات |
+|--------|---------|
+| الواجهة | React 18, React Router 6 |
+| البناء | Vite 7 |
+| الأنماط | Tailwind CSS 3, PostCSS |
+| الحركة | Framer Motion |
+| النماذج | React Hook Form, Yup |
+| الترجمة | i18next, react-i18next |
+| الطلبات | Axios |
+| الإشعارات | react-hot-toast |
+| SEO | react-helmet-async |
 
-### Development Tools
-- **Vite** - أداة البناء والتطوير
-- **ESLint** - فحص جودة الكود
-- **PostCSS** - معالج CSS
-- **Autoprefixer** - إضافة prefixes تلقائية
+## التخصيص السريع
 
-## 🎯 الميزات المتقدمة
+- **الترجمة**: عدّل `src/i18n/locales/ar.json` و `en.json`
+- **الألوان والثيم**: `tailwind.config.js` و `src/index.css`
+- **مسارات الصفحات**: `src/App.jsx`
 
-### نظام الثيمات
-```javascript
-// التبديل بين الأوضاع
-const { darkMode, setDarkMode } = useApp();
+## الترخيص
 
-// تفعيل الوضع الليلي
-setDarkMode(true);
-```
+هذا المشروع مرخّص تحت [MIT License](LICENSE) (إن وُجد الملف).
 
-### نظام الترجمة
-```javascript
-// استخدام الترجمة
-const { t, i18n } = useTranslation();
+## التواصل (مثال — عدّل حسب نطاقك)
 
-// تغيير اللغة
-i18n.changeLanguage('ar');
-```
-
-### الرسوم المتحركة
-```javascript
-// رسوم متحركة عند الظهور
-<motion.div
-  initial={{ opacity: 0, y: 50 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
->
-  محتوى متحرك
-</motion.div>
-```
-
-## 📊 تحسين الأداء
-
-- **Code Splitting** - تقسيم الكود للتحميل عند الطلب
-- **Lazy Loading** - تحميل الصفحات عند الحاجة
-- **Image Optimization** - ضغط وتحسين الصور
-- **CSS Purging** - إزالة CSS غير المستخدم
-- **Bundle Analysis** - تحليل حجم الملفات
-
-## 🔧 التخصيص
-
-### إضافة صفحة جديدة
-1. إنشاء ملف في مجلد `src/pages`
-2. إضافة المسار في `App.jsx`
-3. تحديث ملفات الترجمة
-4. إضافة رابط في التنقل
-
-### تخصيص الألوان
-قم بتعديل ملف `tailwind.config.js`:
-
-```javascript
-theme: {
-  extend: {
-    colors: {
-      brand: {
-        red: '#YOUR_COLOR',
-        // الألوان الأخرى
-      }
-    }
-  }
-}
-```
-
-## 🌍 الترجمة
-
-لإضافة لغة جديدة:
-1. إنشاء ملف في `src/i18n/locales/`
-2. تحديث `src/i18n/index.js`
-3. إضافة خيار اللغة في Header
-
-## 📱 دعم PWA
-
-الموقع جاهز ليصبح Progressive Web App:
-- Service Worker للعمل بدون إنترنت
-- Web App Manifest للتثبيت
-- استجابة سريعة ومتجاوبة
-
-## 🔒 الأمان
-
-- تنظيف المدخلات لمنع XSS
-- استخدام HTTPS في الإنتاج
-- Headers الأمان المناسبة
-- فحص التبعيات بانتظام
-
-## 📈 التطوير المستقبلي
-
-### ميزات مخططة
-- [ ] لوحة تحكم إدارية
-- [ ] نظام إدارة المحتوى
-- [ ] API متكامل
-- [ ] قاعدة بيانات
-- [ ] نظام المصادقة
-- [ ] رفع الصور
-- [ ] نظام التعليقات
-- [ ] تحليلات الزوار
-
-## 🤝 المساهمة
-
-نرحب بالمساهمات! يرجى:
-1. Fork المشروع
-2. إنشاء فرع للميزة الجديدة
-3. إجراء التغييرات
-4. إرسال Pull Request
-
-## 📄 الترخيص
-
-هذا المشروع مرخص تحت [MIT License](LICENSE).
-
-## 👥 الفريق
-
-- **أحمد محمد** - Full Stack Developer
-- **فاطمة أحمد** - UI/UX Designer  
-- **محمد علي** - Backend Developer
-- **سارة حسن** - Frontend Developer
-
-## 📞 التواصل
-
-- **الموقع**: [shiftstart.sy](https://shiftstart.sy)
-- **البريد**: info@shiftstart.sy
-- **الهاتف**: +963 XXX XXX XXX
+- **الموقع**: [version-tech.sy](https://version-tech.sy)
+- **البريد**: info@version-tech.sy
 
 ---
 
 <div align="center">
-  <p>صنع بـ ❤️ بواسطة فريق Shift Start</p>
-  <p>© 2024 Shift Start. جميع الحقوق محفوظة.</p>
+  <p>صنع بـ ❤️ بواسطة فريق <strong>Version-Tech</strong></p>
+  <p>© 2024–2026 Version-Tech</p>
 </div>
