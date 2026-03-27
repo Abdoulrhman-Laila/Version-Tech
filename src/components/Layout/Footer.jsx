@@ -15,16 +15,21 @@ const taglineClass = 'text-xs font-medium text-primary-200/90 sm:text-sm';
 const bodyOnDark = 'text-sm leading-relaxed text-primary-100/95';
 
 const sectionHeadingClass =
-  'mb-5 inline-flex items-center gap-2 border-b border-primary-500/35 pb-2 text-sm font-semibold uppercase tracking-wider text-primary-50';
+  'mb-5 flex w-full items-center gap-2 border-b border-primary-500/30 pb-3 text-sm font-semibold uppercase tracking-[0.12em] text-primary-50/95';
 
 const linkClass =
-  'text-sm text-primary-100/95 underline-offset-4 decoration-primary-300/40 transition-colors duration-200 hover:text-primary-50 hover:decoration-primary-200/80';
+  'text-sm text-primary-100/95 underline-offset-4 decoration-primary-300/35 transition-colors duration-200 hover:text-primary-50 hover:decoration-primary-200/70';
+
+const navLinkClass = `${linkClass} no-underline hover:underline`;
 
 const socialChipClass =
-  'flex h-11 w-11 items-center justify-center rounded-full bg-primary-gradient text-primary-50 shadow-lg shadow-primary-900/45 ring-2 ring-primary-500/25 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-primary-900/60 hover:ring-primary-300/40';
+  'flex h-11 w-11 items-center justify-center rounded-full bg-primary-gradient text-primary-50 shadow-lg shadow-primary-900/40 ring-2 ring-primary-500/20 transition-all duration-300 hover:scale-[1.06] hover:shadow-xl hover:shadow-primary-900/55 hover:ring-primary-300/35';
 
 const contactIconWrap =
-  'mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary-800/70 text-primary-200 ring-1 ring-primary-500/25';
+  'mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-800/60 text-primary-200 ring-1 ring-primary-500/20';
+
+const contactCardClass =
+  'rounded-2xl border border-primary-600/25 bg-primary-800/20 p-4 shadow-inner shadow-primary-950/20 backdrop-blur-[2px] sm:p-5';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -104,7 +109,7 @@ const Footer = () => {
       />
 
       <div className="container-custom relative">
-        <div className="grid grid-cols-1 gap-10 py-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-1 items-start gap-12 py-16 md:grid-cols-2 md:gap-x-10 md:gap-y-12 lg:grid-cols-4 lg:gap-x-12">
           <div className="lg:col-span-1">
             <div className="mb-5 flex items-center space-x-3 rtl:space-x-reverse">
               <div className={logoFrameClass}>
@@ -144,10 +149,10 @@ const Footer = () => {
               />
               {t('footer.quickLinks')}
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.key}>
-                  <Link to={link.path} className={`${linkClass} underline`}>
+                  <Link to={link.path} className={navLinkClass}>
                     {t(`nav.${link.key}`)}
                   </Link>
                 </li>
@@ -163,12 +168,12 @@ const Footer = () => {
               />
               {t('footer.services')}
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service}>
-                  <span className="flex items-start gap-2 text-sm font-medium text-primary-100/95">
+                  <span className="flex items-start gap-2.5 text-sm font-medium leading-snug text-primary-100/95">
                     <span
-                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-500/80"
+                      className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary-400/90"
                       aria-hidden
                     />
                     {t(`services.${service}.title`)}
@@ -186,8 +191,8 @@ const Footer = () => {
               />
               {t('footer.contact')}
             </h4>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+            <div className={`${contactCardClass} space-y-4`}>
+              <div className="flex items-start gap-3">
                 <div className={contactIconWrap}>
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -197,9 +202,9 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                <span className="text-sm text-primary-100/95">سوريا، دمشق</span>
+                <span className="pt-0.5 text-sm leading-relaxed text-primary-100/95">سوريا، دمشق</span>
               </div>
-              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+              <div className="flex items-start gap-3">
                 <div className={contactIconWrap}>
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -207,34 +212,39 @@ const Footer = () => {
                 </div>
                 <a
                   href="tel:+963982187269"
-                  className={`${linkClass} text-sm font-medium`}
+                  className={`${linkClass} pt-0.5 text-sm font-semibold tabular-nums tracking-wide`}
                 >
                   +963982187269
                 </a>
               </div>
-              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+              <div className="flex items-start gap-3">
                 <div className={contactIconWrap}>
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
                 </div>
-                <span className="text-sm text-primary-100/95">info@versiontech.sy</span>
+                <a
+                  href="mailto:info@versiontech.sy"
+                  className={`${linkClass} pt-0.5 text-sm font-medium break-all`}
+                >
+                  info@versiontech.sy
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-primary-700/50 bg-primary-900/40 py-7 backdrop-blur-[2px]">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-center text-sm text-primary-200/95 md:text-start">
+        <div className="mt-2 rounded-t-2xl border border-primary-600/30 border-b-0 bg-primary-900/50 px-5 py-9 backdrop-blur-sm sm:px-8 sm:py-10 md:mt-4 md:px-10 md:py-11">
+          <div className="flex w-full max-w-none flex-col items-stretch justify-between gap-6 sm:gap-7 md:flex-row md:items-center md:gap-8">
+            <p className="text-center text-sm leading-relaxed text-primary-200/90 md:max-w-[min(100%,42rem)] md:text-start">
               © {currentYear} Version-Tech. {t('footer.rights')}.
             </p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 rtl:space-x-reverse">
-              <Link to="/privacy" className={`${linkClass} underline`}>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:justify-center md:shrink-0 md:justify-end">
+              <Link to="/privacy" className={navLinkClass}>
                 سياسة الخصوصية
               </Link>
-              <Link to="/terms" className={`${linkClass} underline`}>
+              <Link to="/terms" className={navLinkClass}>
                 شروط الاستخدام
               </Link>
             </div>
