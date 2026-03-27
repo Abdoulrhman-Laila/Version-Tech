@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const viewportReveal = { once: true, amount: 0.15, margin: '0px 0px -48px 0px' };
+const easeOut = [0.22, 1, 0.36, 1];
 import { teamAPI, handleApiError } from '../services/api';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import { FaGithub, FaLinkedin, FaTwitter, FaDribbble, FaBehance } from 'react-icons/fa';
@@ -74,8 +77,60 @@ const Team = () => {
   const [teamMembers, setTeamMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const reduceMotion = useReducedMotion();
 
   const lang = useMemo(() => i18n.language?.split('-')[0] || 'ar', [i18n.language]);
+
+  const fadeInUp = useMemo(
+    () => ({
+      hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 28 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: reduceMotion ? 0 : 0.52, ease: easeOut },
+      },
+    }),
+    [reduceMotion]
+  );
+
+  const staggerContainer = useMemo(
+    () => ({
+      hidden: { opacity: reduceMotion ? 1 : 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: reduceMotion ? 0 : 0.1,
+          delayChildren: reduceMotion ? 0 : 0.06,
+        },
+      },
+    }),
+    [reduceMotion]
+  );
+
+  const cardReveal = useMemo(
+    () => ({
+      hidden: { opacity: reduceMotion ? 1 : 0, y: reduceMotion ? 0 : 32 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: reduceMotion ? 0 : 0.44, ease: easeOut },
+      },
+    }),
+    [reduceMotion]
+  );
+
+  const gridStagger = useMemo(
+    () => ({
+      hidden: {},
+      visible: {
+        transition: {
+          staggerChildren: reduceMotion ? 0 : 0.08,
+          delayChildren: reduceMotion ? 0 : 0.06,
+        },
+      },
+    }),
+    [reduceMotion]
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -147,34 +202,64 @@ const Team = () => {
       {/* Hero — index.css `.gradient-text` + primary mesh */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-primary-100/95 to-primary-200/70 pt-24 pb-14 dark:from-primary-900 dark:via-primary-800 dark:to-primary-900 md:pt-28 md:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(111,106,240,0.18),transparent)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_-10%,rgba(77,59,255,0.14),transparent)]" />
-        <div className="pointer-events-none absolute -right-20 top-20 h-56 w-56 rounded-full bg-primary-500/15 blur-3xl" />
-        <div className="pointer-events-none absolute -left-16 bottom-10 h-40 w-40 rounded-full bg-primary-600/12 blur-3xl" />
+        {!reduceMotion && (
+          <>
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -right-20 top-20 h-56 w-56 rounded-full bg-primary-500/15 blur-3xl"
+              animate={{ scale: [1, 1.07, 1], opacity: [0.85, 1, 0.85] }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute -left-16 bottom-10 h-40 w-40 rounded-full bg-primary-600/12 blur-3xl"
+              animate={{ scale: [1, 1.06, 1], opacity: [0.9, 1, 0.9] }}
+              transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+            />
+          </>
+        )}
+        {reduceMotion && (
+          <>
+            <div
+              className="pointer-events-none absolute -right-20 top-20 h-56 w-56 rounded-full bg-primary-500/15 blur-3xl"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute -left-16 bottom-10 h-40 w-40 rounded-full bg-primary-600/12 blur-3xl"
+              aria-hidden
+            />
+          </>
+        )}
 
         <div className="container-custom relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            className="gradient-text mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
-          >
-            {t('team.title')}
-          </motion.h1>
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+            <motion.h1
+              variants={fadeInUp}
+              className="gradient-text mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl"
+            >
+              {t('team.title')}
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="mx-auto max-w-3xl text-lg font-medium text-primary-800/95 dark:text-primary-100/90 md:text-xl"
-          >
-            {t('team.subtitle')}
-          </motion.p>
+            <motion.p
+              variants={fadeInUp}
+              className="mx-auto max-w-3xl text-lg font-medium text-primary-800/95 dark:text-primary-100/90 md:text-xl"
+            >
+              {t('team.subtitle')}
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
       {/* Team grid */}
       <section className="section-padding bg-white/80 dark:bg-primary-900/35">
-        <div className="container-custom grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
-          {teamMembers.map((member, index) => {
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportReveal}
+          variants={gridStagger}
+          className="container-custom grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3"
+        >
+          {teamMembers.map((member) => {
             const socialEntries = getSocialEntries(member);
             const name = pickLocalized(member.name);
             const bio = pickLocalized(member.bio);
@@ -186,20 +271,27 @@ const Team = () => {
             return (
               <motion.div
                 key={member._id || member.id}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
+                variants={cardReveal}
+                whileHover={
+                  reduceMotion ? undefined : { y: -5, transition: { duration: 0.22, ease: easeOut } }
+                }
                 className="group"
               >
-                <div className="card hover-lift relative overflow-hidden rounded-2xl border border-primary-200/90 p-6 text-center dark:border-primary-700/50">
+                <div className="card hover-lift relative overflow-hidden rounded-2xl border border-primary-200/90 p-6 text-center shadow-sm transition-shadow duration-300 group-hover:shadow-lg dark:border-primary-700/50">
                   <div
                     className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${getRoleGradient(member.role)} opacity-0 transition-opacity duration-300 group-hover:opacity-[0.12] dark:group-hover:opacity-[0.15]`}
                     aria-hidden
                   />
 
                   <div className="relative z-10">
-                    <div className="mx-auto mb-5 flex h-36 w-36 items-center justify-center">
+                    <motion.div
+                      className="mx-auto mb-5 flex h-36 w-36 items-center justify-center"
+                      whileHover={
+                        reduceMotion
+                          ? undefined
+                          : { scale: 1.02, transition: { type: 'spring', stiffness: 380, damping: 22 } }
+                      }
+                    >
                       <div className="rounded-full bg-primary-gradient p-0.5 shadow-lg shadow-primary-900/20 ring-2 ring-primary-300/40 dark:ring-primary-500/30">
                         <div className="h-[8.75rem] w-[8.75rem] overflow-hidden rounded-full border-2 border-white/90 dark:border-primary-900/80">
                           <img
@@ -209,7 +301,7 @@ const Team = () => {
                           />
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
 
                     <h3 className="mb-1 text-xl font-bold text-primary-900 dark:text-primary-50">
                       {name || '—'}
@@ -258,16 +350,18 @@ const Team = () => {
                           const Icon = SOCIAL_ICONS[platform];
                           if (!Icon || !url) return null;
                           return (
-                            <a
+                            <motion.a
                               key={`${platform}-${url}`}
                               href={url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-gradient text-primary-50 shadow-md shadow-primary-900/25 ring-2 ring-primary-500/20 transition-all duration-300 hover:scale-110 hover:shadow-lg dark:ring-primary-400/25"
+                              className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-gradient text-primary-50 shadow-md shadow-primary-900/25 ring-2 ring-primary-500/20 transition-shadow duration-300 hover:shadow-lg dark:ring-primary-400/25"
                               aria-label={platform}
+                              whileHover={reduceMotion ? undefined : { scale: 1.1, y: -2 }}
+                              whileTap={reduceMotion ? undefined : { scale: 0.94 }}
                             >
                               <Icon className="h-4 w-4" />
-                            </a>
+                            </motion.a>
                           );
                         })
                       ) : (
@@ -281,7 +375,7 @@ const Team = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </section>
     </>
   );
