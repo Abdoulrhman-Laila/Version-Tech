@@ -17,7 +17,7 @@ import {
 import LoadingSpinner from '../../components/UI/LoadingSpinner';
 import toast from 'react-hot-toast';
 import { useApp } from '../../contexts/AppContext';
-import AdminContacts from './Admincontacts'; // استخدم الملف الموجود لديك لإدارة الرسائل
+import AdminContacts from './admincontacts'; // استخدم الملف الموجود لديك لإدارة الرسائل
 
 const Dashbord = () => {
   const { darkMode, setDarkMode } = useApp();
