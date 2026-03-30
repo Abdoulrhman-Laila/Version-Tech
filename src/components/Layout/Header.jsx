@@ -15,12 +15,34 @@ const Header = () => {
   const { t } = useTranslation();
   const { darkMode, setDarkMode, language, setLanguage, sidebarOpen, toggleSidebar } = useApp();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 639px)');
+    const onChange = () => setIsMobile(mql.matches);
+    onChange();
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', onChange);
+    } else {
+      // Safari fallback
+      // eslint-disable-next-line deprecation/deprecation
+      mql.addListener(onChange);
+    }
+    return () => {
+      if (typeof mql.removeEventListener === 'function') {
+        mql.removeEventListener('change', onChange);
+      } else {
+        // eslint-disable-next-line deprecation/deprecation
+        mql.removeListener(onChange);
+      }
+    };
   }, []);
 
   const navItems = [
@@ -39,8 +61,14 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass shadow-soft border-b border-primary-200/70 dark:border-primary-700/50'
-          : 'border-b border-transparent bg-transparent'
+          ? isMobile
+            ? 'bg-primary-50 shadow-soft border-b border-primary-200/80 dark:bg-primary-900 dark:border-primary-700/50'
+            : 'glass shadow-soft border-b border-primary-200/70 dark:border-primary-700/50'
+          : isMobile
+            ? sidebarOpen
+              ? 'bg-primary-50 shadow-soft border-b border-primary-200/70 dark:bg-primary-900 dark:border-primary-700/50'
+              : 'border-b border-transparent bg-transparent'
+            : 'border-b border-transparent bg-transparent'
       }`}
     >
       {/* Accent line when scrolled — uses primary from tailwind.config */}
@@ -154,7 +182,9 @@ const Header = () => {
         {/* Mobile nav */}
         <div
           className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
-            sidebarOpen ? 'max-h-[28rem] opacity-100' : 'max-h-0 opacity-0'
+            sidebarOpen
+              ? 'max-h-[28rem] opacity-100 bg-primary-50 shadow-soft dark:bg-primary-900'
+              : 'max-h-0 opacity-0 bg-transparent'
           }`}
         >
           <div className="space-y-1 border-t border-primary-200/80 py-4 dark:border-primary-700/50">
