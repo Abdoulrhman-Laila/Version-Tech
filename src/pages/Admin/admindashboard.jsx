@@ -18,6 +18,8 @@ import LoadingSpinner from '../../components/UI/LoadingSpinner';
 import toast from 'react-hot-toast';
 import { useApp } from '../../contexts/AppContext';
 import AdminContacts from './admincontacts'; // استخدم الملف الموجود لديك لإدارة الرسائل
+import AdminTeam from './adminteam';
+import AdminProjects from './adminprojects';
 
 const Dashbord = () => {
   const { darkMode, setDarkMode } = useApp();
@@ -37,6 +39,8 @@ const Dashbord = () => {
   useEffect(() => {
     checkAuthStatus();
   }, []);
+
+  // Theme stays user-controlled (no auto-toggle)
 
   const checkAuthStatus = async () => {
     try {
@@ -310,19 +314,15 @@ const Dashbord = () => {
 
           {/* Team Tab */}
           {activeTab === 'team' && (
-            <div className="card p-8 shadow-soft">
-              <p className="text-primary-700 dark:text-primary-200">
-                إدارة الفريق ستتم إضافتها قريباً
-              </p>
+            <div className="card overflow-hidden p-4 shadow-soft sm:p-6">
+              <AdminTeam />
             </div>
           )}
 
           {/* Projects Tab */}
           {activeTab === 'projects' && (
-            <div className="card p-8 shadow-soft">
-              <p className="text-primary-700 dark:text-primary-200">
-                إدارة المشاريع ستتم إضافتها قريباً
-              </p>
+            <div className="card overflow-hidden p-4 shadow-soft sm:p-6">
+              <AdminProjects />
             </div>
           )}
 
